@@ -10,12 +10,12 @@ package com.dmdev.assignment5;
 
 public class ArabicNumerals {
     public static void main(String[] args) {
-        String str = "MMMCLXXXIX";
+        String str = "MMMDCCCXCVII";
         System.out.println(convertToArabic(str));
     }
 
     public static int convertToArabic(String romanNumeral) {
-        return countAll(romanNumeral) - subtractIXV(romanNumeral);
+        return countAll(romanNumeral) - 2 * (subtractIXV(romanNumeral));
     }
 
     public static int countAll(String romanNumeral) {
@@ -44,11 +44,11 @@ public class ArabicNumerals {
         int subtraction = 0;
         for (int i = 0; i <= romanNumeral.length() - 2; i++) {
             if (romanNumeral.startsWith("XC", i) || romanNumeral.startsWith("XL", i)) {
-                subtraction += 20;
+                subtraction += 10;
             } else if (romanNumeral.startsWith("IV", i) || romanNumeral.startsWith("IX", i)) {
-                subtraction += 2;
+                subtraction += 1;
             } else if (romanNumeral.startsWith("CD", i) || romanNumeral.startsWith("CM", i)) {
-                subtraction += 200;
+                subtraction += 100;
             }
         }
         return subtraction;
